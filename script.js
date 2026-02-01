@@ -238,7 +238,7 @@
         if (!value || value.trim().length < 2) {
           return 'Meno musí obsahovať aspoň 2 znaky';
         }
-        if (!/^[a-zA-ZÀ-ÿs-']{2,50}$/.test(value)) {
+        if (!/^[a-zA-ZÀ-ÿ\s-']{2,50}$/.test(value)) {
           return 'Meno obsahuje nepovolené znaky';
         }
         return null;
@@ -247,13 +247,13 @@
         if (!value || value.trim().length === 0) {
           return 'E-mail je povinný';
         }
-        if (!/^[^s@]+@[^s@]+.[^s@]+$/.test(value)) {
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
           return 'Neplatný formát e-mailu';
         }
         return null;
       },
       phone: (value) => {
-        if (value && !/^[ds+-()]{10,20}$/.test(value)) {
+        if (value && !/^[\d\s+\-()]{10,20}$/.test(value)) {
           return 'Neplatný formát telefónneho čísla';
         }
         return null;
